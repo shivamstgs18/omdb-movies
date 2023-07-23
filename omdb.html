@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>goodmovies.com</title>
+  <link rel="stylesheet" href="omdb.css">
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+  <link rel="icon" href="tab_icon.png" type="image/png">
+
+</head>
+
+<body>
+  <header>
+    <h1>Good Movies.Com</h1>
+    <!-- Search box -->
+    <input class="search-box" type="text" id="searchInput" placeholder="Search movies...">
+    <button class="search-btn" id="searchBtn">Search</button>
+  </header>
+  
+  <main>
+    <!-- Movie list -->
+    <div id="movieList"></div>
+
+    <!-- Pagination -->
+    <div id="pagination">
+      <button id="prevBtn" disabled>Previous</button>
+      <span id="pageInfo">Page 1</span>
+      <button id="nextBtn">Next</button>
+    </div>
+
+    <!-- Movie details section -->
+    <div id="movieDetails">
+      <!-- Details will be dynamically populated here -->
+    </div>
+
+    <!-- User ratings and comments -->
+    <div id="userRatings">
+      <!-- Ratings and comments will be dynamically populated here -->
+    </div>
+  </main>
+
+  <!-- Add any necessary JavaScript files -->
+  <script src="omdb.js"></script>
+</body>
+
+</html>

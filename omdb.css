@@ -1,0 +1,148 @@
+/* General styles */
+body {
+  font-family: Ubuntu, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+h1{
+  font-size: 50px;
+  color: black;
+  font-weight: 700;
+}
+
+header {
+  background-color: rgba(245,197,24,255);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+main {
+  padding: 10px;
+}
+
+.search-box{
+  height: 30px;
+  width: 30%;
+}
+.search-btn{
+  height: 30px;
+  background-color: lightgreen;
+  border-radius: 20px;
+  width: 8%;
+  font-weight: 700;
+  border-color: #333;
+}
+
+.search-btn:hover{
+  cursor: pointer;
+}
+/* Movie list styles */
+#movieList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 10px;
+  background-color:rgba(15,16,20,255);
+}
+
+.movie-card {
+  background-color: #555555;
+  padding: 10px;
+  border-radius: 5px;
+  /* Add initial border color */
+  border: 2px solid #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+.movie-card:hover {
+  /* Change border color to dark gray on hover */
+  border-color: #a10404;
+  border-width: 2px;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.movie-card h3 {
+  margin: 10px 0 0;
+}
+
+/* Pagination styles */
+#pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#prevBtn,
+#nextBtn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+#prevBtn[disabled],
+#nextBtn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Movie details section styles */
+#movieDetails {
+  margin: 20px 0;
+  border: 5px solid rgba(15,16,20,255);
+  padding: 20px;
+  background-color: rgba(245,197,24,255);
+  border-radius: 5px;
+}
+
+#movieDetails h2 {
+  margin: 0 0 10px;
+}
+
+#userRatings {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #555555;
+  border: 2px solid rgba(15,16,20,255);
+}
+
+#userRatings h3 {
+  margin: 0 0 10px;
+}
+
+#userRatings div,
+#userRatings textarea {
+  margin-bottom: 10px;
+}
+
+#userRatings textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+#userRatings button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.movie-details-title {
+  text-align: center;
+
+}
