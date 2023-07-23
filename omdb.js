@@ -74,7 +74,10 @@ async function showMovieDetails(movieId) {
       <p><b>IMDb Rating:</b> ${movieDetails.imdbRating}</p>
       <p><b>Runtime:</b> ${movieDetails.Runtime}</p>
       <p><b>Language:</b> ${movieDetails.Language}</p>
-      <!-- Add other relevant movie details as needed -->
+      <p><b>Awards:</b> ${movieDetails.Awards}</p>
+      <p><b>Metacritic Score:</b> ${movieDetails.Metascore}</p>
+      <p><b>IMDb Votes:</b> ${movieDetails.imdbVotes}</p>
+      <p><b>Country:</b> ${movieDetails.Country}</p>
     </div>
   `;
 
