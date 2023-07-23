@@ -139,12 +139,14 @@ function displayUserRatingsAndComments(movieId) {
   userRatingsElem.innerHTML = `
     <h3>Average User Rating & Comments</h3>
     <div>
-      <label for="rating">Rating:</label>
+      <label for="rating"><b>Rating:</b></label>
       <input type="number" id="rating" min="1" max="5" value="${movieData.ratings[movieData.ratings.length - 1] || 0}">
     </div>
     <div>
-      <label for="comment" placeholder="drop your reviews here...">Comment:</label>
-      <textarea id="comment">${movieData.comments[movieData.comments.length - 1] || ""}</textarea>
+      <label for="comment"><b>Comment</b>:</label>
+      <div class="txt-con">
+        <textarea id="comment"  placeholder="drop your reviews here..." >${movieData.comments[movieData.comments.length - 1] || ""}</textarea>
+      </div>
     </div>
     <div>
       <button onclick="saveRatingAndComment('${movieId}')">Save</button>
@@ -254,7 +256,7 @@ async function prevPage() {
     alert(errorMessage);
   }
 }
-
+//when site reloads or opens it shows default query
 async function loadDefaultMovies() {
   const defaultQuery = "star wars"; 
 
