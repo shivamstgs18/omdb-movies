@@ -10,7 +10,15 @@ async function fetchMovies(query, page) {
   const searchQuery = `*${query}*`;
 
   const response = await fetch(`${apiUrl}?apikey=${apiKey}&s=${searchQuery}&page=${page}`);
+ 
+  if (!response.ok) {
+    throw new Error("Failed to fetch movies from the server.");
+  }
   const data = await response.json();
+  if (data.Error) {
+    throw new Error(data.Error);
+  }
+
   return data;
 }
 
@@ -84,30 +92,6 @@ async function showMovieDetails(movieId) {
   displayUserRatingsAndComments(movieId);
   movieDetailsElem.scrollIntoView({ behavior: "smooth" });
 }
-
-
-// //user ratings and comments
-// function displayUserRatingsAndComments(movieId) {
-
-
-//   const savedData = JSON.parse(localStorage.getItem("userRatingsAndComments")) || {};
-//   const movieData = savedData[movieId] || { rating: 0, comment: "" };
-
-//   const userRatingsElem = document.getElementById("userRatings");
-//   userRatingsElem.innerHTML = `
-//     <h3>User Ratings</h3>
-//     <div>
-//       <label for="rating">Rating:</label>
-//       <input type="number" id="rating" min="1" max="5" value="${movieData.rating}">
-//     </div>
-//     <div>
-//       <label for="comment">Comment:</label>
-//       <textarea id="comment" placeholder="Enter your comment here...">${movieData.comment}</textarea>
-//     </div>
-//     <button onclick="saveRatingAndComment('${movieId}')">Save</button>
-//   `;
-// }
-
 
 // average rating for a movie
 function calculateAverageRating(movieId) {
@@ -209,44 +193,65 @@ function saveRatingAndComment(movieId) {
 
 //handle movie search
 async function searchMovies() {
-  const query = document.getElementById("searchInput").value;
-  currentPage = 1; 
-
-  const searchData = await fetchMovies(query, currentPage);
-  displayMovieList(searchData.Search);
-  handlePagination(searchData.totalResults);
+  try{
+    const query = document.getElementById("searchInput").value;
+    currentPage = 1; 
+  
+    const searchData = await fetchMovies(query, currentPage);
+    displayMovieList(searchData.Search);
+    handlePagination(searchData.totalResults);
+  } catch (error) {
+    const errorMessage = error.message || "An error occurred while fetching movies.";
+    alert(errorMessage);
+  }
+  
 }
 
 //next page
 async function nextPage() {
-  currentPage++;
-  const query = document.getElementById("searchInput").value;
+  try{
 
-
-  if (query) {
-    const searchData = await fetchMovies(query, currentPage);
-    displayMovieList(searchData.Search);
-    handlePagination(searchData.totalResults);
-  } else {
-    defaultCurrentPage++; 
-    await loadDefaultMovies(); 
-  }
-}
-
-// previous page
-async function prevPage() {
-  if (currentPage > 1) {
-    currentPage--;
+    currentPage++;
     const query = document.getElementById("searchInput").value;
+
 
     if (query) {
       const searchData = await fetchMovies(query, currentPage);
       displayMovieList(searchData.Search);
       handlePagination(searchData.totalResults);
+    } else {
+      defaultCurrentPage++; 
+      await loadDefaultMovies(); 
     }
-  } else if (defaultCurrentPage > 1) { 
-    defaultCurrentPage--; 
-    await loadDefaultMovies(); 
+  }
+  catch (error) {
+    const errorMessage = error.message || "An error occurred while fetching movies.";
+    alert(errorMessage);
+  }
+  
+}
+
+// previous page
+async function prevPage() {
+
+  try{
+    if (currentPage > 1) {
+      currentPage--;
+      const query = document.getElementById("searchInput").value;
+  
+      if (query) {
+        const searchData = await fetchMovies(query, currentPage);
+        displayMovieList(searchData.Search);
+        handlePagination(searchData.totalResults);
+      }
+    } else if (defaultCurrentPage > 1) { 
+      defaultCurrentPage--; 
+      await loadDefaultMovies(); 
+    }
+  }
+  catch (error) {
+    const errorMessage = error.message || "An error occurred while fetching movies.";
+    alert(errorMessage);
   }
 }
 
